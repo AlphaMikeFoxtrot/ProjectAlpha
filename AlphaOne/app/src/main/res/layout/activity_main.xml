@@ -1,18 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    android:gravity="center"
     tools:context="com.anonymous.library.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_marginBottom="58dp"
+        android:src="@drawable/logo_one"/>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/login_username"
+            android:textSize="18sp"
+            android:layout_margin="8dp"
+            android:background="@drawable/round_et"
+            android:padding="4dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            style="@style/Base.V12.Widget.AppCompat.EditText"
+            android:textColor="@android:color/white"
+            android:hint="USERNAME"
+            android:inputType="textWebEditText"
+            android:textColorHint="@android:color/darker_gray"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_margin="8dp"
+            android:background="@drawable/round_et"
+            android:padding="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:inputType="textPassword"
+            style="@style/Base.V12.Widget.AppCompat.EditText"
+            android:textColor="@android:color/white"
+            android:hint="PASSWORD"
+            android:textColorHint="@android:color/darker_gray"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:text="LOGIN"
+            android:id="@+id/login_button"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:text="Not yet a member? Register Here"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-smallcaps"
+            android:id="@+id/register_button"
+            android:textStyle="bold"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
