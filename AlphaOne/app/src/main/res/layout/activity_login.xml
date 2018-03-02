@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@drawable/login_background"
     android:gravity="center"
-    tools:context="com.anonymous.library.MainActivity">
+    tools:context="com.anonymous.library.LoginActivity">
 
     <ImageView
         android:layout_width="300px"

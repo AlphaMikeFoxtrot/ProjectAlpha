@@ -1,6 +1,7 @@
 package com.anonymous.library;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     Button mLogin, mRegister;
     EditText mUsername, mPassword;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         mLogin = findViewById(R.id.login_button);
         mRegister = findViewById(R.id.register_button);
@@ -41,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 login(mUsername.getText().toString(), mPassword.getText().toString());
+            }
+        });
+
+        mRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toRegister = new Intent(LoginActivity.this, RegisterActivity.class);
+                toRegister.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(toRegister);
             }
         });
     }
@@ -55,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            loginProgressDialog = new ProgressDialog(MainActivity.this);
+            loginProgressDialog = new ProgressDialog(LoginActivity.this);
             loginProgressDialog.setMessage("authenticating...");
             loginProgressDialog.show();
         }
@@ -84,10 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
                 bufferedWriter = new BufferedWriter(outputStreamWriter);
 
-                String data = URLEncoder.encode("username", "UTF-8") +"="+ URLEncoder.encode(username, "UTF-8") +"&"+
-                        URLEncoder.encode("password", "UTF-8") +"="+ URLEncoder.encode(password, "UTF-8");
+                String data = URLEncoder.encode("username", "UTF-8") +"="+ URLEncoder.encode(username.toLowerCase(), "UTF-8") +"&"+
+                        URLEncoder.encode("password", "UTF-8") +"="+ URLEncoder.encode(password.toLowerCase(), "UTF-8");
 
                 bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
 
                 bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -138,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(MainActivity.this, "LOGGED IN", Toast.LENGTH_SHORT).show();
 //
 //            }
-            Toast.makeText(MainActivity.this, "" + s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "" + s, Toast.LENGTH_SHORT).show();
         }
     }
 }
